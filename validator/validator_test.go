@@ -1,4 +1,4 @@
-package main
+package validator
 
 import (
 	"gopkg.in/go-playground/validator.v9"
@@ -8,7 +8,10 @@ import (
 
 // validation target
 type CreateUserPayload struct {
-	Username string `validate:"username"`
+	Username            string `validate:"required,username"`
+	Token               string `validate:"required,token"`
+	AgreeTermsOfService string `validate:"required,oneof=yes no"`
+	NotMinor            string `validate:"required,oneof=yes no"`
 }
 
 // custom validate function
@@ -22,18 +25,53 @@ func usernameValidation(fl validator.FieldLevel) bool {
 	return false;
 }
 
-func TestUsernameCustomValidation(t *testing.T) {
+func tokenValidation(fl validator.FieldLevel) bool {
+	tf, err := regexp.Match(`^[ -~]{8,128}$`, []byte(fl.Field().String()))
+
+	if tf && err == nil {
+		return true
+	}
+
+	return false;
+}
+
+func TestCreateUserPayloadValidation(t *testing.T) {
 	validate := validator.New()
 	validate.RegisterValidation("username", usernameValidation)
+	validate.RegisterValidation("token", tokenValidation)
 
-	// valid username
-	err := validate.Struct(CreateUserPayload{Username: "hoge"})
+	// valid payload
+	err := validate.Struct(
+		CreateUserPayload{
+			Username:            "hoge-2",
+			Token:               "hogehogehoge",
+			AgreeTermsOfService: "yes",
+			NotMinor:            "yes"})
+
 	if err != nil {
 		t.Fatalf("failed test: %v", err)
 	}
 
-	// invalid username length under 1
+	err = validate.Struct(
+		CreateUserPayload{
+			Username:            "hoge-2",
+			Token:               "hogehogehoge",
+			AgreeTermsOfService: "no",
+			NotMinor:            "no"})
+
+	if err != nil {
+		t.Fatalf("failed test: %v", err)
+	}
+
+	// invalid payload
+	// case length under 1
 	err = validate.Struct(CreateUserPayload{Username: ""})
+	if err == nil {
+		t.Fatalf("failed test: %v", err)
+	}
+
+	// case length over 32
+	err = validate.Struct(CreateUserPayload{Username: "hogehogehogehogehogehogehogehogehogehoge"})
 	if err == nil {
 		t.Fatalf("failed test: %v", err)
 	}
