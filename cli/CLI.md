@@ -9,3 +9,5 @@ dockerやk8sのCLIの作者であるところの[spf13/cobra](https://github.com
 * [cobraの使い方とテスト](https://text.baldanders.info/golang/using-and-testing-cobra/)
 
 エントリ作者の[spiegel-im-spiegel/gocli](https://github.com/spiegel-im-spiegel/gocli/exitcode)に依存してしまうけど、結構いい感じだったので書き換えてみようと思う。
+
+が、結構重いので、都度これを使うかは悩みもの。
