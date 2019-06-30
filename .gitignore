@@ -16,3 +16,6 @@
 
 # vendoring directory
 vendor
+
+# individual binaries
+softwaredesign/201905/choice/choice
