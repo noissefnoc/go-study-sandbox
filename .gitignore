@@ -20,3 +20,4 @@ vendor
 # individual binaries
 softwaredesign/201905/choice/choice
 parser/expr/expr
+parser/expr2/expr2
