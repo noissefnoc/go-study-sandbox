@@ -55,4 +55,19 @@
         * `default` それ以外
             * 再起的にXMLを読み進める
 
+#### ユーティリティー関数
+
+* `Node.UnmarchalXML`
+    * 明示的な呼び出しがないので、これ何かの `interface` なんだろうな
+    * 引数の `xml.StartElement` を `Node.Attrs` にセットして
+    * `xml.Decoder` でデコードした結果を `Node` にセットしてる
+* `escape`
+    * 第一引数( `s` )に第二引数( `set` )が入っていたら、バックスラッシュを前につける
+* `file.extract`
+    * リファレンスが書いてある XML からパスを取り出してファイルオープン
+    * `embed` オプションの有無で分岐
+        * `embed` あり：画像ヘッダをつけて base64 で埋め込む
+        * `embed` なし：画像を書き出し
+ * `attr`
+    * XML の attribute の中から、該当する文字列があるか検索し、あれば値と `true` なければ空文字と `false` を返す
 
