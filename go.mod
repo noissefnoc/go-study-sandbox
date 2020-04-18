@@ -1,6 +1,6 @@
 module github.com/noissefnoc/go-study-sandbox
 
-go 1.12
+go 1.14
 
 require (
 	github.com/PuerkitoBio/goquery v1.5.0 // indirect
@@ -16,6 +16,7 @@ require (
 	github.com/gocolly/colly v1.2.0
 	github.com/golang/mock v1.3.1
 	github.com/golang/protobuf v1.3.2 // indirect
+	github.com/google/go-cmp v0.4.0
 	github.com/kennygrant/sanitize v1.2.4 // indirect
 	github.com/leodido/go-urn v1.1.0 // indirect
 	github.com/magiconair/properties v1.8.1 // indirect
