@@ -1,25 +1,26 @@
 package go_cmp
 
 import (
+	"testing"
+
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
-	"testing"
 )
 
 type Person struct {
 	Name string
-	Age int
+	Age  int
 }
 
 func TestGoCmp(t *testing.T) {
 	p1 := &Person{
 		Name: "Alice",
-		Age: 10,
+		Age:  10,
 	}
 
 	p2 := &Person{
 		Name: "Jone",
-		Age: 10,
+		Age:  10,
 	}
 
 	checkResult(t, p1, p2)
