@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"bytes"
-	"github.com/spiegel-im-spiegel/gocli/exitcode"
-	"github.com/spiegel-im-spiegel/gocli/rwi"
+	"github.com/goark/gocli/exitcode"
+	"github.com/goark/gocli/rwi"
 	"testing"
 )
 
