@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 	"github.com/pkg/errors"
-	"github.com/spiegel-im-spiegel/gocli/exitcode"
-	"github.com/spiegel-im-spiegel/gocli/rwi"
+	"github.com/goark/gocli/exitcode"
+	"github.com/goark/gocli/rwi"
 	"os"
 	"runtime"
 
